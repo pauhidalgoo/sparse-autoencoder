@@ -49,12 +49,14 @@ def visualize_feature_maps(feature_maps, num_features=25):
     plt.colorbar()
     plt.show()
 
+activation_data = torch.load("activation_data.pt")
 
 feature_maps = extract_feature_maps(sae, activation_data)
 
 
 visualize_feature_maps(feature_maps)
 
+layer_index = 15
 
 def get_top_activating_tokens(text, feature_index, top_k=5):
     inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True).to(device)
